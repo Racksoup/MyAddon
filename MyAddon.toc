@@ -1,0 +1,6 @@
+## Interface: 11404
+## Title: MyAddon
+## Author: WindFish
+## DefaultState: enabled
+
+core.lua
