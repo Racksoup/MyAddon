@@ -259,15 +259,25 @@ ColorPickerButton:SetScript("OnClick", function()
 end)
 
 -- SimpleHTML
-local SimpleHTML = CreateFrame("SimpleHTML")
-SimpleHTML:SetFontObject('p', GameFontNormal)
-SimpleHTML:SetHyperlinksEnabled(true)
-SimpleHTML:SetJustifyH('p', "LEFT")
-SimpleHTML:ClearAllPoints()
-SimpleHTML:SetPoint("TOPLEFT", InnerFrame, "TOPLEFT", 10, -655)
-SimpleHTML:SetSize(200, 200)
-SimpleHTML:SetText('<html><body><h1>Heading1</h1><p>A paragraph</p></body></html>')
+local SimpleHTML = CreateFrame("SimpleHTML", "Simple HTML", InnerFrame)
 SimpleHTML:SetPoint("TOPLEFT", 10, -655)
+SimpleHTML:SetFontObject('p', GameFontNormal)
+--SimpleHTML:SetHyperlinksEnabled(true)
+SimpleHTML:SetSize(290, 200)
+SimpleHTML:SetText('<html><body><h1>SimpleHTML Demo: Ambush</h1><img src="Interface\\Icons\\Ability_Ambush" width="32" height="32" align="right"/><p align="center">|cffee4400"You think this hurts? Just wait."|r</p><br/><br/><p>Among every ability a rogue has at his disposal,<br/>Ambush is without a doubt the hardest hitting Rogue ability.</p></body></html>');
+
+-- Hyperlinks
+local HyperlinkFrame = CreateFrame("Frame", "Hyperlink Frame", InnerFrame)
+HyperlinkFrame:SetPoint("TOPLEFT", 10, -740)
+HyperlinkFrame:SetSize(200, 50)
+HyperlinkFrame:SetHyperlinksEnabled(true)
+HyperlinkFrame:SetScript("OnHyperlinkClick", function(self, link, text, button)
+	SetItemRef(link, text, button, self)
+end)
+local Hyperlink = HyperlinkFrame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+Hyperlink:SetAllPoints()
+Hyperlink:SetText(select(2,GetItemInfo(6948)))
+
 
 
 
